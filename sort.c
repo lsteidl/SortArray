@@ -14,6 +14,19 @@ int main()
 
     int manual_array[10]; // define array to be sorted manually
     int qsort_array[10];  // define array to be sorted with built in function
+    int input; // holds user input
+    printf("1) Generate Random Array\n");
+    printf("2) Custom Array (user defined values)\n");
+    printf("User Choice: ");
+
+    char line[256];
+    fgets(line, sizeof(line), stdin);
+    if( 1 == sscanf(line, "%d", &input)){
+        printf("You choose: %d \n", input);
+    }
+    
+    
+
     int random;           // hold random number
     srand(time(NULL));    // sets up new sequence of pseudo-random numbers to be returned by rand()
     for (int i = 0; i < 10; i++)
