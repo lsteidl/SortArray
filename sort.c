@@ -20,32 +20,64 @@ int main()
     {
         random = rand() % 100; // get only numbers between 0 and 99
        // printf("%d\n", random);
-        array[i] = random;
+        qsort_array[i] = random;
+        manual_array[i] = random;
     }
     // display array before sorting
-    printf("Before sorting...");
+    printf("Before sorting.....");
     for (int i = 0; i < 10; i++)
     {
         
         if(i == 9){
-            printf("%d\n", array[i]);
+            printf("%d\n", qsort_array[i]);
         }
         else{
-            printf("%d, ", array[i]);
+            printf("%d, ", qsort_array[i]);
         }
     }
-    qsort(array, 10, sizeof(int), compare); // built-in quicksort function
+    qsort(qsort_array, 10, sizeof(int), compare); // built-in quicksort function
 
     // display array after quicksort 
     printf("Quicksort Result...");
     for (int i = 0; i < 10; i++)
     {
-        
         if(i == 9){
-            printf("%d\n", array[i]);
+            printf("%d\n", qsort_array[i]);
         }
         else{
-            printf("%d, ", array[i]);
+            printf("%d, ", qsort_array[i]);
+        }
+    }
+
+    // sort manually
+    // loop through each array element
+    int lowest = 100; // hold value of next lowest element
+    int index = -1; // hold index of next lowest element
+    //int temp = -1; // temporary value during switching
+    for (int i = 0; i < 10; i++)
+    {
+        // loop to find next lowest element
+        for(int j = i; j < 10; j++){
+            if(manual_array[j] < lowest){
+                lowest = manual_array[j];
+                index = j;
+            }
+        }
+        //printf("lowest found is...%d\n", lowest);
+        // switch lowest with value in next space to fill
+        manual_array[index] = manual_array[i]; 
+        manual_array[i] = lowest;
+        lowest = 100; // reset so next lowest can be found
+    }
+    // display array after manual sorting 
+    printf("Manual Result......");
+    for (int i = 0; i < 10; i++)
+    {
+        if(i == 9){
+            printf("%d\n", manual_array[i]);
+        }
+        else{
+            printf("%d, ", manual_array[i]);
         }
     }
     
