@@ -46,13 +46,12 @@ int main()
     {
         int read_size; // holds input line size
         char* token; // use for tokenization
-        printf("Please enter 10 integers with values (1-99) seperated by spaces...\n");
-        // fgets(line, sizeof(line), stdin);
+        printf("Please enter 10 integers with values (1-99) seperated by commas...\n");
         read_size = getline(&b, &buffer_size, stdin);
         
         for (int i = 0; i < 10; i++)
         {
-                if((token = strsep(&b, " ")) != NULL){
+                if((token = strsep(&b, " ,")) != NULL){
                     qsort_array[i] = atoi(token);
                     manual_array[i] = atoi(token);
                     printf("You NOW choose: %d \n", atoi(token)); // only for testing
